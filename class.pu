@@ -1,0 +1,45 @@
+@startuml
+state  "1" o-- "2" ライントレース
+走行処理 "1" o-- "1" state
+state  "1" ..> "1" 色センサ:use
+state  "1" ..> "1" ブレーキ:use
+
+ブレーキ "1" ..> "2" モータ:use
+
+ライントレース  "1" .> "1" 色センサ:use
+ライントレース  "1" ..> "2" モータ:use
+
+
+class 色センサ{
+    + 反射光の値を取得(): float
+    + RGBの測定値を取得(): [int, int, int]
+}
+
+class モータ{
+    + 回転力を設定(int): void 
+    + 回転角度を取得(): int
+}
+
+class ブレーキ{
+    - 速度: float
+    + ランストップ(): void
+}
+
+class ライントレース{
+    + ライントレース左(): void 
+    + ライントレース右(): void 
+    - 速度: float
+    - 反射光の値: float
+    
+}
+
+class state {
+    - 反射光の値: float
+    - RGBの測定値: [int, int, int]
+    - state: int
+}
+
+class 走行処理{
+    void 実行()
+}
+@enduml 
