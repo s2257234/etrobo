@@ -1,0 +1,12 @@
+@startuml
+object 走行処理
+object ライントレース
+object 色センサ
+object 右モータ
+object 左モータ
+
+走行処理 o-- ライントレース
+ライントレース o-- 色センサ
+ライントレース o-- 右モータ
+ライントレース o-- 左モータ
+@enduml

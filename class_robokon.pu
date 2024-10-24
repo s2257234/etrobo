@@ -1,0 +1,24 @@
+@startuml
+走行処理  "1" o-- "1" ライントレース
+ライントレース  "1" ..> "1" 色センサ:use
+ライントレース  "1" ..> "2" モータ:use
+class 色センサ{
+    (int, int, int) 明るさを取得()
+    (int, int, int) RGBの測定値を取得()
+}
+
+class モータ{
+    void 回転力を設定(int)
+    (int) 回転角度を取得()
+}
+
+class ライントレース{
+    + void 実行()
+    - float 速度
+    - float 明るさの目標値
+}
+
+class 走行処理{
+    void 実行()
+}
+@enduml 

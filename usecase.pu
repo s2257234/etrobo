@@ -1,0 +1,14 @@
+@startuml
+left to right direction
+actor 操作者 as op
+
+rectangle ロボット{
+usecase 走行処理 as run
+usecase ライントレース as linetrace
+usecase 反転 as reverse
+}
+op --> run
+run --> linetrace: include
+run --> reverse: include
+
+@enduml
